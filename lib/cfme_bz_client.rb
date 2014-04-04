@@ -8,7 +8,7 @@ require 'json'
 class CfmeBzClient
   attr_accessor :cfme_bz_uri, :username, :password
 
-  DEFAULT_CFME_BZ_URI        = "http://cfme-bz.manageiq.redhat"
+  DEFAULT_CFME_BZ_URI        = "http://cfme-bz.manageiq.redhat.com"
   DEFAULT_CFME_BZ_API_PREFIX = "/issues"
   DEFAULT_CFME_BZ_TIMEOUT    = 60
   API_SUCCEEDED, API_FAILED  = [true, false]
