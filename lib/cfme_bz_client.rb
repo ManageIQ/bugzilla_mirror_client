@@ -35,6 +35,7 @@ class CfmeBzClient
   end
 
   def search(params = {})
+    params[:bug_ids] &&= Array(params[:bug_ids]).join(",")
     execute(:get, nil, nil, params)
   end
 
