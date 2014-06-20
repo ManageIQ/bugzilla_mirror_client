@@ -1,5 +1,6 @@
 require "cfme_bz_client/version"
 require "cfme_bz_client/response"
+require "cfme_bz_client/bug"
 
 require 'rest-client'
 require 'base64'
@@ -63,18 +64,11 @@ class CfmeBzClient
       restclient_args << data if method == :post
       restclient_args << base_params(method).merge(:params => params)
 
-      RestClient.send(*restclient_args) do |response, request, result, &block|
-        api_response = Response.new(API_SUCCEEDED, response.code)
-        begin
-          api_response.result = JSON.parse(response)
-          api_response.status = API_FAILED if response.code >= 400
-        rescue => e
-          api_response.assign(API_FAILED, 500, {}, "Failed to Parse Response from #{cfme_bz_uri} - #{e}")
-        end
-        api_response
-      end
+      response        = RestClient.send(*restclient_args)
+      response_status = response.code >= 400 ? API_FAILED : API_SUCCEEDED
+      Response.new(response_status, response.code, JSON.parse(response))
     rescue => e
-      Response.new(API_FAILED, 500, {}, e.message)
+      Response.new(API_FAILED, 500, [], "Failed to Parse Response from #{cfme_bz_uri} - #{e.message}")
     end
   end
 
