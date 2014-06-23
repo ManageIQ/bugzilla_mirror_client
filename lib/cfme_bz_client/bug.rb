@@ -9,6 +9,7 @@ class CfmeBzClient
     attr_accessor :id
     attr_accessor :keywords
     attr_accessor :status
+    attr_accessor :summary
     attr_accessor :target_release
 
     def initialize(attribute_set)
@@ -20,6 +21,7 @@ class CfmeBzClient
       @id             = attribute_set.delete("bug_id")
       @keywords       = attribute_set.delete("keywords")
       @status         = attribute_set.delete("status")
+      @summary        = attribute_set.delete("summary")
       @target_release = attribute_set.delete("target_release")
 
       @attributes = attribute_set
