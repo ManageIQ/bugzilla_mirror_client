@@ -1,5 +1,7 @@
 # BugzillaMirrorClient
 
+[![Code Climate](https://codeclimate.com/github/ManageIQ/bugzilla_mirror_client/badges/gpa.svg)](https://codeclimate.com/github/ManageIQ/bugzilla_mirror_client)
+
 The BugzillaMirrorClient Gem provides a ruby library access to the [Bugzilla
 Mirror REST API](https://github.com/ManageIQ/bugzilla_mirror).
 
