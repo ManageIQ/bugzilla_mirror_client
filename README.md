@@ -73,7 +73,7 @@ show_response client.search("attributes" => "summary,status,assigned_to",
 # Search with SQL filter and Exanding Results
 show_response client.search("attributes" => "summary,status,assigned_to,severity",
                             "search"     => "assigned_to=johndoe@comp.com",
-                            "sqlfilter"  => "summary LIKE '%feature%'"",
+                            "sqlfilter"  => "summary LIKE '%feature%'",
                             "expand"     => "associations")
 
 # Search showing flags
