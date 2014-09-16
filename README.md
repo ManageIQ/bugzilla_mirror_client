@@ -21,19 +21,19 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 require 'bugzilla_mirror_client'
 
 def show_response(response)
   if response.status
     puts "Request Succeeded"
-    puts "Result: #{response.result}" 
+    puts "Result: #{response.result}"
   else
     puts "Request Failed"
     puts "Code: #{response.code} Message: #{response.message}"
   end
 end
-  
+
 ### BugzillaMirrorClient user and password is required for Updates only
 
 client = BugzillaMirrorClient.new("http://bugzilla_mirror_host:5000",
@@ -64,18 +64,18 @@ show_response client.search("attributes" => "summary,status,assigned_to",
                             "limit"      => 10,
                             "sort_by"    => "summary",
                             "sort_order" => "asc")
- 
+
 # Search with Expanding Results
 show_response client.search("attributes" => "summary,status,assigned_to",
                             "search"     => "assigned_to=johndoe@comp.com",
-                            "expand"     => "associations")   
-                            
+                            "expand"     => "associations")
+
 # Search with SQL filter and Exanding Results
 show_response client.search("attributes" => "summary,status,assigned_to,severity",
                             "search"     => "assigned_to=johndoe@comp.com",
                             "sqlfilter"  => "summary LIKE '%feature%'"",
                             "expand"     => "associations")
-                            
+
 # Search showing flags
 show_response client.search("attributes" => "summary,status,assigned_to,flags",
                             "search"     => "status=ON_DEV")
@@ -88,13 +88,13 @@ data = {
          "url" => "http://data_for_issue",
          "priority" => "medium"
        }
-show_response client.update(12345, data)   
+show_response client.update(12345, data)
 
 # Adding a single non-private comment to an issue
 data = {
          "comment" => "this comment added via the bugzilla_mirror_client"
        }
-show_response client.update(12345, data)  
+show_response client.update(12345, data)
 
 # Updating data and adding a private comment
 data = {
@@ -104,7 +104,7 @@ data = {
            "private" => true
          }
        }
-show_response client.update(12345, data)  
+show_response client.update(12345, data)
 
 # Deleting and Setting flags
 data = {
@@ -114,7 +114,7 @@ data = {
            "devel_ack" => "+"
          }
        }
-show_response client.update(12345, data)    
+show_response client.update(12345, data)
 ```
 
 ## Contributing
