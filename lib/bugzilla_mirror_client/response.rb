@@ -1,4 +1,4 @@
-class CfmeBzClient
+class BugzillaMirrorClient
   class Response
     attr_reader   :status, :code, :result, :message
 

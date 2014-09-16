@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'cfme_bz_client/version'
+require 'bugzilla_mirror_client/version'
 
 Gem::Specification.new do |spec|
 
@@ -9,13 +9,13 @@ Gem::Specification.new do |spec|
     "Alberto Bellotti" => "abellott@redhat.com"
   }
 
-  spec.name          = "cfme_bz_client"
-  spec.version       = CfmeBzClient::VERSION
+  spec.name          = "bugzilla_mirror_client"
+  spec.version       = BugzillaMirrorClient::VERSION
   spec.authors       = authors_hash.keys
   spec.email         = authors_hash.values
-  spec.description   = %q{CfmeBzClient is a client interface to the CFME Bugzilla REST API.}
-  spec.summary       = %q{CfmeBzClient is a client interface to the CFME Bugzilla REST API.}
-  spec.homepage      = ""
+  spec.description   = %q{BugzillaMirrorClient is a client interface to the Bugzilla Mirror REST API.}
+  spec.summary       = %q{BugzillaMirrorClient is a client interface to the Bugzilla Mirror REST API.}
+  spec.homepage      = "https://github.com/ManageIQ/bugzilla_mirror_client"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -- lib/*`.split("\n")

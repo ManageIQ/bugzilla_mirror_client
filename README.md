@@ -1,12 +1,13 @@
-# CfmeBzClient
+# BugzillaMirrorClient
 
-The CfmeBzClient Gem provides a ruby library access to the CfmeBz REST API.
+The BugzillaMirrorClient Gem provides a ruby library access to the [Bugzilla
+Mirror REST API](https://github.com/ManageIQ/bugzilla_mirror).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'cfme_bz_client'
+    gem 'bugzilla_mirror_client'
 
 And then execute:
 
@@ -14,12 +15,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cfme_bz_client
+    $ gem install bugzilla_mirror_client
 
 ## Usage
 
 ```
-require 'cfme_bz_client'
+require 'bugzilla_mirror_client'
 
 def show_response(response)
   if response.status
@@ -31,9 +32,9 @@ def show_response(response)
   end
 end
   
-### CfmeBzClient user and password is required for Updates only
+### BugzillaMirrorClient user and password is required for Updates only
 
-client = CfmeBzClient.new("http://cfme_bz_host:5000",
+client = BugzillaMirrorClient.new("http://bugzilla_mirror_host:5000",
                           "bz_account@comp.com",
                           "bz_password")
 
@@ -89,7 +90,7 @@ show_response client.update(12345, data)
 
 # Adding a single non-private comment to an issue
 data = {
-         "comment" => "this comment added via the cfme_bz_client"
+         "comment" => "this comment added via the bugzilla_mirror_client"
        }
 show_response client.update(12345, data)  
 
@@ -97,7 +98,7 @@ show_response client.update(12345, data)
 data = {
          "priority" => "high",
          "comment"  => {
-           "text"    => "this comment also added via the cfme_bz_client",
+           "text"    => "this comment also added via the bugzilla_mirror_client",
            "private" => true
          }
        }

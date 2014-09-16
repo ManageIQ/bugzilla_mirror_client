@@ -1,21 +1,20 @@
-require "cfme_bz_client/version"
-require "cfme_bz_client/response"
-require "cfme_bz_client/bug"
+require "bugzilla_mirror_client/version"
+require "bugzilla_mirror_client/response"
+require "bugzilla_mirror_client/bug"
 
 require 'rest-client'
 require 'base64'
 require 'json'
 
-class CfmeBzClient
-  attr_accessor :cfme_bz_uri, :username, :password
+class BugzillaMirrorClient
+  attr_accessor :bugzilla_mirror_uri, :username, :password
 
-  DEFAULT_CFME_BZ_URI        = "http://cfme-bz.manageiq.redhat.com"
-  DEFAULT_CFME_BZ_API_PREFIX = "/issues"
-  DEFAULT_CFME_BZ_TIMEOUT    = 60
+  DEFAULT_BUGZILLA_MIRROR_API_PREFIX = "/issues"
+  DEFAULT_BUGZILLA_MIRROR_TIMEOUT    = 60
   API_SUCCEEDED, API_FAILED  = [true, false]
 
-  def initialize(cfme_bz_uri = DEFAULT_CFME_BZ_URI, username = nil, password = nil)
-    self.cfme_bz_uri = cfme_bz_uri
+  def initialize(bugzilla_mirror_uri, username = nil, password = nil)
+    self.bugzilla_mirror_uri = bugzilla_mirror_uri
     self.username    = username
     self.password    = password
   end
@@ -57,7 +56,7 @@ class CfmeBzClient
 
   def execute(method, suffix = nil, data = nil, params = {})
     raise "Unsupported Method #{method} specified" unless [:get, :post].include?(method)
-    target = "#{cfme_bz_uri}#{DEFAULT_CFME_BZ_API_PREFIX}"
+    target = "#{bugzilla_mirror_uri}#{DEFAULT_BUGZILLA_MIRROR_API_PREFIX}"
     target << "/#{suffix}" if suffix
     begin
       restclient_args = [method, target]
@@ -68,7 +67,7 @@ class CfmeBzClient
       response_status = response.code >= 400 ? API_FAILED : API_SUCCEEDED
       Response.new(response_status, response.code, JSON.parse(response))
     rescue => e
-      Response.new(API_FAILED, 500, [], "Failed to Parse Response from #{cfme_bz_uri} - #{e.message}")
+      Response.new(API_FAILED, 500, [], "Failed to Parse Response from #{bugzilla_mirror_uri} - #{e.message}")
     end
   end
 

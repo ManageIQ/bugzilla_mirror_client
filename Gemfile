@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in cfme_bz_client.gemspec
+# Specify your gem's dependencies in bugzilla_mirror_client.gemspec
 gemspec
 
 # Additional dependencies that need :git and other options

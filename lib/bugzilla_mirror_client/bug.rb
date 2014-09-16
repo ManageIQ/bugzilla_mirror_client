@@ -1,4 +1,4 @@
-class CfmeBzClient
+class BugzillaMirrorClient
   class Bug
     attr_accessor :attributes
     attr_accessor :blocks
