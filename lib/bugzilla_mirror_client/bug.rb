@@ -26,5 +26,9 @@ class BugzillaMirrorClient
 
       @attributes = attribute_set
     end
+
+    def ==(other)
+      id == other.id
+    end
   end
 end
