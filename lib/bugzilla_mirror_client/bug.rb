@@ -28,7 +28,7 @@ class BugzillaMirrorClient
     end
 
     def ==(other)
-      id == other.id
+      other.kind_of?(self.class) && id == other.id
     end
   end
 end
